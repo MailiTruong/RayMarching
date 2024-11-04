@@ -8,17 +8,87 @@
 var gl;
 var program;
 
+function parseTimeToFloat(timeStr) 
+{
+        const [time, period] = timeStr.trim().toLowerCase().split(' '); 
+        let [hours, minutes] = time.split(':').map(Number); 
+
+        if (period === "pm" && hours !== 12) hours += 12; 
+        if (period === "am" && hours === 12) hours = 0;   
+
+        return hours + minutes / 60; 
+}
+
+
+function categorizeWeather(description) 
+{
+        description = description.toLowerCase();
+        for (const [category, keywords] of Object.entries(weatherCategories)) {
+                if (keywords.some(keyword => description.includes(keyword))) { 
+                        return category; 
+                }
+        }
+        console.log("Unable to determine weather");
+        return 0.0; 
+}
+
+
+const weatherCategories = {
+        1.0: ["sunny", "clear", "mostly sunny", "partly sunny","fair"],
+        2.0: ["cloudy", "mostly cloudy", "partly cloudy", "overcast"],
+        3.0: ["snow", "snowy", "light snow", "heavy snow", "blizzard", "flurries"],
+        4.0: ["rain", "showers", "drizzle", "light rain", "heavy rain", "thunderstorms"]
+};
+
+function fetchWeatherData()
+{
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://weather.com/weather/today/l/18e81cdf57491c51a6fba3c57732b7b61bdf511fc2b613570316978b9f20687a", true);
+        xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(xhr.responseText, "text/html");
+
+                        const place = doc.querySelector(".CurrentConditions--location--yub4l").textContent;
+                        const time = doc.querySelector(".CurrentConditions--timestamp--LqnOd").textContent;
+                        const temp = doc.querySelector(".CurrentConditions--tempValue--zUBSz").textContent;
+                        const condition = doc.querySelector(".CurrentConditions--phraseValue---VS-k").textContent;
+                        const sunriseSunsetElements = doc.querySelectorAll(".TwcSunChart--dateValue--TzXBr");
+                        const sunrise = sunriseSunsetElements[0].textContent;
+                        const sunset = sunriseSunsetElements[1].textContent;
+
+                        document.getElementById("place").textContent = place;
+                        document.getElementById("temp").textContent = temp;
+                        document.getElementById("time").textContent = time;
+
+                        const words = time.trim().toLowerCase().split(' ');
+                        const time_num = words[2] + " " + words[3];
+                        const local_time = gl.getUniformLocation(program, "Local_time");
+                        gl.uniform1f(local_time, parseTimeToFloat(time_num));
+
+                        const Ssun_loc = gl.getUniformLocation(program, "Ssun");
+                        gl.uniform2f(Ssun_loc, parseTimeToFloat(sunrise), parseTimeToFloat(sunset));
+
+
+                        const condition_loc = gl.getUniformLocation(program, "Condition");
+                        gl.uniform1f(condition_loc, categorizeWeather(condition));
+                }
+        };
+        xhr.send();
+}
+
 async function init()
 {
         //initialize context
         const canvas = document.getElementById("context");
-        canvas.height = 800;
-        canvas.width = 1200;
+        canvas.height = 1080;
+        canvas.width = 1920;
         gl = canvas.getContext("webgl");
 
         if (gl == null)
         {
-                alert( "unable to initialize webgl");
+                console.log( "unable to initialize webgl");
                 return;
         }
 
@@ -89,6 +159,9 @@ async function init()
         requestAnimationFrame(render); 
 }
 
+let lastFetchTime = 0;
+const fetchInterval = 60000;
+
 function render(delta_time)
 {
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -99,6 +172,23 @@ function render(delta_time)
 
         const time_loc = gl.getUniformLocation(program, "iTime");
         gl.uniform1f(time_loc, delta_time);
+
+        let xMouse = 0;
+        let yMouse = 0;
+
+        const mouse_loc = gl.getUniformLocation(program, "iMouse");
+        document.getElementById("context").addEventListener("mousemove", function(e)
+                {
+                        xMouse = e.offsetX;
+                        yMouse = e.offsetY;
+                        document.getElementById("mouse-pos").textContent ="x : " + xMouse + " y : " + yMouse;
+                        gl.uniform2f(mouse_loc, xMouse, yMouse);
+                })
+        if (Date.now() - lastFetchTime >= fetchInterval)
+        {
+                fetchWeatherData();
+                lastFetchTime = Date.now();
+        }
 
         requestAnimationFrame(render); 
 }
