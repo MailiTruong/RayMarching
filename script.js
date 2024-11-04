@@ -43,7 +43,7 @@ const weatherCategories = {
 function fetchWeatherData()
 {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://weather.com/weather/today/l/18e81cdf57491c51a6fba3c57732b7b61bdf511fc2b613570316978b9f20687a", true);
+        xhr.open("GET", "https://weather.com/weather/today/l/5da9179b2292cff910f4a9529bef5c66dbe95d358847a3fe0635bdbda25747a7", true);
         xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
 

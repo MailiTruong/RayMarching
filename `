@@ -45,7 +45,7 @@ vec2 sdForest(vec3 p, float tmin)
         }
         for (int i=0; i<4 ; i++)
         {
-                float dLeaves = sdCone(p + vec3(0.0, -0.5+ float(i)*0.8, 0.0), vec2(sin(radians(50.0)), cos(radians(50.0))), 1.0);
+                float dLeaves = sdCone(p + vec3(0.0, float(i) / 2.0, 0.0), vec2(sin(radians(50.0)), cos(radians(50.0))), 1.0);
                 if (dLeaves < tmin)
                 {
                         tmin = dLeaves;
