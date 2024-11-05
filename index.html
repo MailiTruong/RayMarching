@@ -10,10 +10,20 @@
             <div id="screen"> 
                 <canvas id="context"></canvas>
             </div>
-            <p>Mouse pos: <span id="mouse-pos"></span></p>
-            <p>Location: <span id="place"></span></p>
-            <p>Temperature(F): <span id="temp"></span></p>
-            <p>Time: <span id="time"></span></p>
+            <div>
+                <br>
+                <form id="get-url-form" method="post">
+                    <label for="url">Enter location url:</label>
+                    <input type="url" id="wurl" name="wurl">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div>
+                <p>Location: <span id="place"></span></p>
+                <p>Temperature(F): <span id="temp"></span></p>
+                <p>Time: <span id="time"></span></p>
+                <p>Fps: <span id="fps"></span></p>
+            </div>
         </div>
         <script src ="script.js"></script>
     </body>
