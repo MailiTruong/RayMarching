@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <header>
-        <title></title>
-        <link href="style.css" rel="stylesheet">
-    </header>
-    <body>
-        <div>
+<html lang="en">
+<head>
+    <title>Droppy - Interactive Weather Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
             <h1>Droppy</h1>
-            <div id="screen"> 
-                <canvas id="context"></canvas>
-            </div>
-            <div>
-                <br>
-                <form id="get-url-form" method="post">
-                    <label for="url">Enter location url:</label>
-                    <input type="url" id="wurl" name="wurl">
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-            <div>
-                <p>Location: <span id="place"></span></p>
-                <p>Temperature(F): <span id="temp"></span></p>
-                <p>Time: <span id="time"></span></p>
-                <p>Fps: <span id="fps"></span></p>
-            </div>
+            <p>Real-time Weather Visualization</p>
+        </header>
+        <div id="screen">
+            <canvas id="context"></canvas>
         </div>
-        <script src ="script.js"></script>
-    </body>
+        <section class="info">
+            <form id="get-url-form" method="post">
+                <label for="wurl">Enter location URL:</label>
+                <input type="url" id="wurl" name="wurl" placeholder="https://example.com" required>
+                <input type="submit" value="Submit">
+            </form>
+            <div class="data-display">
+                <p>Location: <span id="place"></span></p>
+                <p>Temperature (°F): <span id="temp"></span></p>
+                <p>Time: <span id="time"></span></p>
+                <p>Weather condition: <span id="weather-condition"></span></p>
+                <p>FPS: <span id="fps"></span></p>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
 

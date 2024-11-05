@@ -66,15 +66,20 @@ function fetch_weather_data()
 
                         const place = doc.querySelector(".CurrentConditions--location--yub4l").textContent;
                         const time = doc.querySelector(".CurrentConditions--timestamp--LqnOd").textContent;
-                        const temp = doc.querySelector(".CurrentConditions--tempValue--zUBSz").textContent;
+                        let temp = doc.querySelector(".CurrentConditions--tempValue--zUBSz").textContent;
                         const condition = doc.querySelector(".CurrentConditions--phraseValue---VS-k").textContent;
                         const sunriseSunsetElements = doc.querySelectorAll(".TwcSunChart--dateValue--TzXBr");
                         const sunrise = sunriseSunsetElements[0].textContent;
                         const sunset = sunriseSunsetElements[1].textContent;
 
+                        temp = parseFloat(temp.replace('°', ''));
+                        temp = (temp - 32) * (5.0 / 9.0);
+                        const temperature = String(Math.floor(temp)) + "°";
+
                         document.getElementById("place").textContent = place;
-                        document.getElementById("temp").textContent = temp;
+                        document.getElementById("temp").textContent = temperature;
                         document.getElementById("time").textContent = time;
+                        document.getElementById("weather-condition").textContent = condition;
 
                         const words = time.trim().toLowerCase().split(' ');
                         const time_num = words[2] + " " + words[3];
