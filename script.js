@@ -36,7 +36,7 @@ function categorize_weather(description)
 const weather_categories = {
         1.0: ["sunny", "clear", "mostly sunny", "partly sunny","fair"],
         2.0: ["cloudy", "mostly cloudy", "partly cloudy", "overcast"],
-        3.0: ["snow", "snowy", "light snow", "heavy snow", "blizzard", "flurries"],
+        3.0: ["snow", "snowy", "light snow", "heavy snow", "blizzard", "flurries", "snow shower"],
         4.0: ["rain", "showers", "drizzle", "light rain", "heavy rain", "thunderstorms"]
 };
 
