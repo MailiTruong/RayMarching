@@ -15,7 +15,8 @@ Droppy is an interactive weather visualization tool that displays dynamic weathe
 
 ## Technologies 
 
-- **WebGL/Shader Programming**: Used to create the 3D canvas visualization.
+- **WebGl**: Used to create the 3D canvas visualization.
+- **Ray Marching**
 
 ## Installing
 
