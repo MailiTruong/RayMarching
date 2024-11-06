@@ -11,7 +11,7 @@ Droppy is an interactive weather visualization tool that displays dynamic weathe
 
 ## Demo
 
-![Droppy Demo](path/to/your/gif.gif)
+![Droppy Demo](demo.gif)
 
 ## Technologies Used
 
