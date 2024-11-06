@@ -1,6 +1,6 @@
 # Droppy - Interactive Weather Visualization
 
-Droppy is an interactive weather visualization tool that displays dynamic weather data along with visual elements such as snow, rain and the position of the sun based on time, using WebGL and shaders. It allows users to input a location URL, fetch weather data, and view it with real-time rendering on a 3D canvas, if it's daytime, raining, having a bright blue sky and so on.
+Droppy is an interactive weather visualization tool that displays dynamic weather data along with visual elements such as snow, rain and the position of the sun based on time, using WebGL and shaders. It allows users to input a location URL, fetch weather data, and view it with real-time rendering on a 3D canvas, if it's daytime, raining, having a bright blue sky and so on. For the moment I can only do the research using URLs from this website [The Weather Channel](https://weather.com/) but the goal will be to be able to use an API so that the user doesn't have to copy the URL himself. 
 
 ## Features
 
@@ -39,6 +39,6 @@ If you like this project, you can either use it via [this link](https://mailitru
 
 ## Acknowledgements
 
-- Thanks to [OpenWeatherMap](https://openweathermap.org/) (or the weather API service you are using) for providing the weather data.
+- Thanks to [The Weather Channel](https://weather.com/) for providing the weather data.
 - Special thanks to the WebGL community for the resources on shader programming and canvas rendering techniques.
 
