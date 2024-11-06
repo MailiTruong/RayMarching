@@ -32,7 +32,7 @@ If you like this project, you can either use it via [this link](https://mailitru
 4. **Clone the Repository**:
    - Run the following command:
      ```bash
-     git clone repository-url
+     git clone https://github.com/MailiTruong/RayMarching.git
      ```
      
 ## Acknowledgements
