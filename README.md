@@ -13,26 +13,23 @@ Droppy is an interactive weather visualization tool that displays dynamic weathe
 
 ![Droppy Demo](demo.gif)
 
-## Technologies Used
+## Technologies 
 
-- **JavaScript**: Handles the logic for weather data fetching and canvas rendering.
 - **WebGL/Shader Programming**: Used to create the 3D canvas visualization.
 
 ## Installing
 
 If you like this project, you can either use it via [this link](https://mailitruong.github.io/RayMarching/) or feel free to clone this repository. Here's how you can do:
 
-1. **Copy the URL (either HTTPS or SSH) provided.**
-
-2. **Open your terminal and navigate to the directory where you want to clone**:
-     ```bash
-     cd path/to/your/directory
-     ```
-
-4. **Clone the Repository**:
+1. **Clone the Repository**:
    - Run the following command:
      ```bash
      git clone https://github.com/MailiTruong/RayMarching.git
+     cd RayMarching
+     ```
+2. **Create a python server:**
+     ```bash
+     python3 -m http.server 8000
      ```
      
 ## Acknowledgements
