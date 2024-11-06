@@ -1,6 +1,6 @@
 # Droppy - Interactive Weather Visualization
 
-Droppy is an interactive weather visualization tool that displays dynamic weather data along with visual elements such as snow, rain and the position of the sun based on time, using WebGL and shaders. It allows users to input a location URL, fetch weather data, and view it with real-time rendering on a 3D canvas, if it's daytime, raining, having a bright blue sky and so on. For the moment I can only do the research using URLs from this website [The Weather Channel](https://weather.com/) but the goal will be to be able to use an API so that the user doesn't have to copy the URL himself. 
+Droppy is an interactive weather visualization tool that displays dynamic weather data along with visual elements such as snow, rain and the position of the sun based on time, using WebGL. It allows users to input a location URL, fetch weather data, and view it with real-time rendering on a 3D canvas, if it's daytime, raining, having a bright blue sky and so on. For the moment I can only do the research using URLs from this website [The Weather Channel](https://weather.com/) but the goal will be to be able to use an API so that the user doesn't have to copy the URL himself. 
 
 ## Features
 
@@ -17,7 +17,6 @@ Droppy is an interactive weather visualization tool that displays dynamic weathe
 
 - **JavaScript**: Handles the logic for weather data fetching and canvas rendering.
 - **WebGL/Shader Programming**: Used to create the 3D canvas visualization.
-- **Weather API**: Fetches weather data based on the provided URL (you can use any compatible weather API service, e.g., OpenWeatherMap, WeatherStack, etc.).
 
 ## Installing
 
@@ -31,12 +30,11 @@ If you like this project, you can either use it via [this link](https://mailitru
      ```
 
 4. **Clone the Repository**:
-   - Run the following command, replacing `repository-url` with the URL you copied earlier:
+   - Run the following command:
      ```bash
      git clone repository-url
      ```
-5. Submit a pull request
-
+     
 ## Acknowledgements
 
 - Thanks to [The Weather Channel](https://weather.com/) for providing the weather data.
