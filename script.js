@@ -1,10 +1,3 @@
-/**
- * @class       : script
- * @author      : mailitg (mailitg@$HOSTNAME)
- * @created     : Monday Oct 28, 2024 17:53:49 GMT
- * @description : script
- */
-
 var gl;
 var program;
 
