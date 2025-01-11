@@ -19,7 +19,6 @@ function parse_time_to_float(timeStr)
         return hours + minutes / 60; 
 }
 
-
 function categorize_weather(description) 
 {
         description = description.toLowerCase();
@@ -31,7 +30,6 @@ function categorize_weather(description)
         console.log("Unable to determine weather");
         return 0.0; 
 }
-
 
 const weather_categories = {
         1.0: ["sunny", "clear", "mostly sunny", "partly sunny","fair"],
@@ -139,7 +137,6 @@ async function init()
                 return;
         }
 
-
         //create program
         program = gl.createProgram();
         gl.attachShader(program, vert_shader);
@@ -175,7 +172,6 @@ async function init()
         const resolution_loc = gl.getUniformLocation(program, "iResolution");
         gl.uniform2f(resolution_loc, canvas.width, canvas.height);
 
-        // handle mouse grab and move
         // Handle mouse move
         var xpos = 0;
         var last_xpos = 0;
@@ -208,7 +204,6 @@ async function init()
 
                                 update_cursor_pos(event);
                                 handle_rotate(xpos - last_xpos);
-
                                 last_xpos = xpos;
                         }
                 })
@@ -278,5 +273,4 @@ function render(timestamp)
 
         requestAnimationFrame(render); 
 }
-
 init();
